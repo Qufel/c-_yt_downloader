@@ -1,0 +1,17 @@
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Yt_Downloader.exe
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Yt_Downloader.deps.json
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Yt_Downloader.runtimeconfig.json
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Yt_Downloader.dll
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Yt_Downloader.pdb
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.csproj.AssemblyReference.cache
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.Form1.resources
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.csproj.GenerateResource.cache
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.GeneratedMSBuildEditorConfig.editorconfig
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.AssemblyInfoInputs.cache
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.AssemblyInfo.cs
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.csproj.CoreCompileInputs.cache
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.dll
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\refint\Yt_Downloader.dll
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.pdb
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.genruntimeconfig.cache
+D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\ref\Yt_Downloader.dll
