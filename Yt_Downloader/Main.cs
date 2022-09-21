@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using YoutubeExplode;
+using YoutubeExplode.Videos;
+
+namespace Yt_Downloader
+{
+    public static class Main
+    {
+        public static string Save_to_path
+        {
+            get { return save_to_path; }
+            set { save_to_path = value; }
+        }
+        private static string save_to_path = "C:/";
+
+        public static List<Video> Videos
+        {
+            get { return videos; }
+            set { videos = value; }
+        }
+        private static List<Video> videos = new List<Video>();
+
+        public static async void AddVideo(string url, string extension)
+        {
+            if(url == null)
+                throw (new Exception("No url provided"));
+            
+            if (extension == null)
+                throw (new Exception("No file format provided"));
+
+            //resolution
+            //bitrate
+
+            var yt = new YoutubeClient();
+
+            var video = await yt.Videos.GetAsync(url);
+
+            var id = video.Id;
+            var title = video.Title;
+            var author = video.Author.ChannelTitle;
+            var length = video.Duration != null ? Convert.ToInt32(video.Duration.Value.TotalSeconds) : 0;
+
+            var file = new Video(id,title,author,length,extension,0,"Pending");
+            videos.Add(file);
+            RefreshDownloadList();
+        }
+
+        private static void RefreshDownloadList()
+        {
+            Form1.download_list.Items.Clear();
+            for(int i = 0; i < videos.Count; i++)
+            {
+                var video = videos[i];
+                var time = SecondsToTime(video.Length);
+
+                string[] tmp = { video.ID, video.Title, video.Author, video.Extension, time, "0%", video.Status };
+                var item = new ListViewItem(tmp);
+                Form1.download_list.Items.Add(item);
+            }
+        }
+
+        private static string SecondsToTime(int s)
+        {
+            int hours = Convert.ToInt32(s / 3600);
+            string _hours = hours < 10 ? $"0{hours}" : Convert.ToString(hours);
+
+            int minutes = Convert.ToInt32((s % 3600)/60);
+            string _minutes = minutes < 10 ? $"0{minutes}" : Convert.ToString(minutes);
+
+            int seconds = s % 60;
+            string _seconds = seconds < 10 ? $"0{seconds}" : Convert.ToString(seconds);
+
+            return _hours + ":" + _minutes + ":" + _seconds;
+        }
+    }
+}

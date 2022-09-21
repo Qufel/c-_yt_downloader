@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "hKjkP8QtFBbtmn3Za7vq79lUvsTsUcZJb8CCcPCoYrVvzd82zgAb7/P1FjR6RV/V60Xo3KszkaEeewh8zClNcw==",
+  "dgSpecHash": "lc6jTFGT1UP+U3nolPBEvA7Zf8ggWbqSo28JVMWuwdMw4lNNc9wK7GEdMsHdIorPGNvWfdvT+pshyFyQ8riARw==",
   "success": true,
   "projectFilePath": "D:\\c#_yt_downloader\\Yt_Downloader\\Yt_Downloader.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Jakub\\.nuget\\packages\\anglesharp\\0.17.0\\anglesharp.0.17.0.nupkg.sha512",
+    "C:\\Users\\Jakub\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jakub\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Jakub\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jakub\\.nuget\\packages\\youtubeexplode\\6.2.2\\youtubeexplode.6.2.2.nupkg.sha512"
+  ],
   "logs": []
 }
