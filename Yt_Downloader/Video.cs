@@ -50,7 +50,18 @@ namespace Yt_Downloader
             set { status = value; }
         }
         private string status = "";
-
+        public int Resolution
+        {
+            get { return resolution; }
+            set { resolution = value; }
+        }
+        private int resolution;
+        public int Bitrate
+        {
+            get { return bitrate; }
+            set { bitrate = value; }
+        }
+        private int bitrate;
         public Video(string id, string title, string author , int length , string extension , int progress , string status)
         {
             ID = id;

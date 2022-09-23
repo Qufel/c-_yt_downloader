@@ -27,11 +27,6 @@ namespace Yt_Downloader
 
         public static async void AddVideo(string url, string extension)
         {
-            if(url == null)
-                throw (new Exception("No url provided"));
-            
-            if (extension == null)
-                throw (new Exception("No file format provided"));
 
             //resolution
             //bitrate
@@ -49,7 +44,21 @@ namespace Yt_Downloader
             videos.Add(file);
             RefreshDownloadList();
         }
+        public static void RemoveVideos(List<string> ids)
+        {
+            for (int i = 0; i < videos.Count; i++)
+            {
+                if (ids.Contains(videos[i].ID))
+                    videos.Remove(videos[i]);
+            }
+            RefreshDownloadList();
+        }
+        public static void ShowErrorBox(string message)
+        {
+            MessageBox.Show(message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        //for code purposes
         private static void RefreshDownloadList()
         {
             Form1.download_list.Items.Clear();

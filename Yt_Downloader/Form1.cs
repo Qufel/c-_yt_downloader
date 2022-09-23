@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace Yt_Downloader
 {
     public partial class Form1 : Form
@@ -48,6 +50,7 @@ namespace Yt_Downloader
         {
             var file_type = 0;
             var extension = video_combobox.Text;
+            var url = url_entry.Text;
 
             if (video_radio.Checked)
                 file_type = 0;
@@ -59,10 +62,63 @@ namespace Yt_Downloader
                 case 0: extension = video_combobox.Text; break;
                 case 1: extension = audio_combobox.Text; break;
             }
+
+            #region error handling
+            var regex = "youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)";
+            Regex r = new Regex(regex);
+
+            if (url == "")
+            {
+                Main.ShowErrorBox("URL not provided!");
+                return;
+            }
+            else
+            {
+                var tmp = url;
+                tmp.Replace("https://", "");
+                if (!r.IsMatch(tmp))
+                {
+                    Main.ShowErrorBox("Incorrect video URL");
+                    return;
+                }
+            }
+
+            if (extension == "")
+            {
+                Main.ShowErrorBox("File format not provided!");
+                return;
+            }
+            switch (file_type)
+            {
+                case 0:
+                    if(res_combobox.Text == "")
+                    {
+                        Main.ShowErrorBox("Video resolution not provided!");
+                        return;
+                    }
+                    break;
+                case 1:
+                    if (bit_combobox.Text == "")
+                    {
+                        Main.ShowErrorBox("Audio bitrate not provided!");
+                        return;
+                    }
+                    break;
+            }
+            #endregion
+
             Console.WriteLine("Adding to list");
-            Main.AddVideo(url_entry.Text, extension);
+            Main.AddVideo(url, extension);
             url_entry.Text = "";
         }
 
+        private void remove_selected(object sender, EventArgs e)
+        {
+            var items = video_list.CheckedItems.Cast<ListViewItem>();
+            List<string> ids = new List<string>();
+            items.ToList().ForEach(x => ids.Add(x.Text));
+
+            Main.RemoveVideos(ids);
+        }
     }
 }

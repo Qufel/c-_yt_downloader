@@ -303,6 +303,7 @@
             this.remove_selected_btn.TabIndex = 5;
             this.remove_selected_btn.Text = "Remove Selected";
             this.remove_selected_btn.UseVisualStyleBackColor = true;
+            this.remove_selected_btn.Click += new System.EventHandler(this.remove_selected);
             // 
             // video_list
             // 
@@ -352,7 +353,6 @@
             // progress
             // 
             this.progress.Text = "Progress";
-            this.progress.Width = 60;
             // 
             // status
             // 
