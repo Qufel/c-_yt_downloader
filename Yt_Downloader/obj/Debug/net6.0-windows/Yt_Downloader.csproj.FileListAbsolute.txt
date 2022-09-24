@@ -18,3 +18,6 @@ D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\ref\Yt_Downloader.dll
 D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\AngleSharp.dll
 D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\YoutubeExplode.dll
 D:\c#_yt_downloader\Yt_Downloader\obj\Debug\net6.0-windows\Yt_Downloader.csproj.CopyComplete
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\FFMpegCore.dll
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\Instances.dll
+D:\c#_yt_downloader\Yt_Downloader\bin\Debug\net6.0-windows\System.Text.Json.dll

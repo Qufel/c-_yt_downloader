@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using YoutubeExplode;
 using YoutubeExplode.Videos;
 
@@ -25,14 +24,33 @@ namespace Yt_Downloader
         }
         private static List<Video> videos = new List<Video>();
 
-        public static async void AddVideo(string url, string extension)
+        //Downloading
+        public static void DownloadSelected(List<string> ids)
         {
+            string[] audioFormats = { "mp3", "aac", "wav", "ogg" };
+            var to_download = new List<Video>();
+            for (int i = 0; i < videos.Count; i++)
+            {
+                if (ids.Contains(videos[i].ID))
+                    to_download.Add(videos[i]);
+            }
+            foreach (var item in to_download)
+            {
+                bool isAudioOnly = audioFormats.Contains(item.Extension) ? true : false;
+                Downloader.Download(item, isAudioOnly);
+            }
+        }
 
-            //resolution
-            //bitrate
+        //video and errors
+        public static async void AddVideo(string url, string extension, string bitrate, string resolution, bool embed)
+        {
+            bitrate = bitrate.Replace("k", "");
+            var bit = bitrate != "" ? Int32.Parse(bitrate) : 0;
+
+            resolution = resolution.Replace("p", "");
+            var res = resolution != "" ? Int32.Parse(resolution) : 0;
 
             var yt = new YoutubeClient();
-
             var video = await yt.Videos.GetAsync(url);
 
             var id = video.Id;
@@ -41,6 +59,8 @@ namespace Yt_Downloader
             var length = video.Duration != null ? Convert.ToInt32(video.Duration.Value.TotalSeconds) : 0;
 
             var file = new Video(id,title,author,length,extension,0,"Pending");
+            file.SetBitrate(bit).SetResolution(res).SetEmbedThumbnail(embed);
+
             videos.Add(file);
             RefreshDownloadList();
         }

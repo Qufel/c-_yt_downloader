@@ -62,6 +62,12 @@ namespace Yt_Downloader
             set { bitrate = value; }
         }
         private int bitrate;
+        public bool EmbedThumbnail
+        {
+            get { return embedThumbnail; }
+            set { embedThumbnail = value; }
+        }
+        private bool embedThumbnail = false;
         public Video(string id, string title, string author , int length , string extension , int progress , string status)
         {
             ID = id;
@@ -72,7 +78,21 @@ namespace Yt_Downloader
             Progress = progress;
             Status = status;
         }
-
+        public Video SetResolution(int res)
+        {
+            Resolution = res;
+            return this;
+        }
+        public Video SetBitrate(int bitrate)
+        {
+            Bitrate = bitrate;
+            return this;
+        }
+        public Video SetEmbedThumbnail(bool embed)
+        {
+            EmbedThumbnail = embed;
+            return this;
+        }
         public Video ChangeStatus(string new_status)
         {
             Status = new_status;

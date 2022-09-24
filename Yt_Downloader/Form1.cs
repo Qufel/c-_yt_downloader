@@ -51,6 +51,7 @@ namespace Yt_Downloader
             var file_type = 0;
             var extension = video_combobox.Text;
             var url = url_entry.Text;
+            var embed = embed_thumbnail_check.Checked;
 
             if (video_radio.Checked)
                 file_type = 0;
@@ -107,8 +108,11 @@ namespace Yt_Downloader
             }
             #endregion
 
+            var bitrate = bit_combobox.Text;
+            var resolution = res_combobox.Text;
+
             Console.WriteLine("Adding to list");
-            Main.AddVideo(url, extension);
+            Main.AddVideo(url, extension, bitrate, resolution, embed);
             url_entry.Text = "";
         }
 
@@ -119,6 +123,15 @@ namespace Yt_Downloader
             items.ToList().ForEach(x => ids.Add(x.Text));
 
             Main.RemoveVideos(ids);
+        }
+
+        private void download_selected(object sender, EventArgs e)
+        {
+            var items = video_list.CheckedItems.Cast<ListViewItem>();
+            List<string> ids = new List<string>();
+            items.ToList().ForEach(x => ids.Add(x.Text));
+
+            Main.DownloadSelected(ids);
         }
     }
 }

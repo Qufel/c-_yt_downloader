@@ -33,7 +33,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.res_combobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.embed_thumbnail_check = new System.Windows.Forms.CheckBox();
             this.add_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.audio_radio = new System.Windows.Forms.RadioButton();
@@ -68,7 +68,7 @@
             this.gb1.Controls.Add(this.label5);
             this.gb1.Controls.Add(this.res_combobox);
             this.gb1.Controls.Add(this.label4);
-            this.gb1.Controls.Add(this.checkBox1);
+            this.gb1.Controls.Add(this.embed_thumbnail_check);
             this.gb1.Controls.Add(this.add_btn);
             this.gb1.Controls.Add(this.label3);
             this.gb1.Controls.Add(this.audio_radio);
@@ -93,9 +93,9 @@
             this.bit_combobox.Enabled = false;
             this.bit_combobox.FormattingEnabled = true;
             this.bit_combobox.Items.AddRange(new object[] {
-            "48k",
-            "128k",
-            "256k"});
+            "50k",
+            "70k",
+            "160k"});
             this.bit_combobox.Location = new System.Drawing.Point(266, 120);
             this.bit_combobox.Name = "bit_combobox";
             this.bit_combobox.Size = new System.Drawing.Size(121, 23);
@@ -137,15 +137,15 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Resolution:";
             // 
-            // checkBox1
+            // embed_thumbnail_check
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(393, 122);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(121, 19);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Embed thumbnail";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.embed_thumbnail_check.AutoSize = true;
+            this.embed_thumbnail_check.Location = new System.Drawing.Point(393, 122);
+            this.embed_thumbnail_check.Name = "embed_thumbnail_check";
+            this.embed_thumbnail_check.Size = new System.Drawing.Size(121, 19);
+            this.embed_thumbnail_check.TabIndex = 11;
+            this.embed_thumbnail_check.Text = "Embed thumbnail";
+            this.embed_thumbnail_check.UseVisualStyleBackColor = true;
             // 
             // add_btn
             // 
@@ -294,6 +294,7 @@
             this.download_selected_btn.TabIndex = 6;
             this.download_selected_btn.Text = "Download Selected";
             this.download_selected_btn.UseVisualStyleBackColor = true;
+            this.download_selected_btn.Click += new System.EventHandler(this.download_selected);
             // 
             // remove_selected_btn
             // 
@@ -402,7 +403,7 @@
         private ComboBox audio_combobox;
         private RadioButton video_radio;
         private Label label3;
-        private CheckBox checkBox1;
+        private CheckBox embed_thumbnail_check;
         private Button add_btn;
         private ComboBox bit_combobox;
         private Label label5;
