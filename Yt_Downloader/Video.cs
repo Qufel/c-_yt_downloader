@@ -38,12 +38,12 @@ namespace Yt_Downloader
             set { extension = value; }
         }
         private string extension = "";
-        public int Progress
+        public double Progress
         {
             get { return progress; }
             set { progress = value; }
         }
-        private int progress = 0;
+        private double progress = 0;
         public string Status
         {
             get { return status; }
@@ -68,6 +68,13 @@ namespace Yt_Downloader
             set { embedThumbnail = value; }
         }
         private bool embedThumbnail = false;
+        public bool HasDownloaded
+        {
+            get { return hasDownloaded; }
+            set { hasDownloaded = value; }
+        }
+        private bool hasDownloaded = false;
+        
         public Video(string id, string title, string author , int length , string extension , int progress , string status)
         {
             ID = id;
@@ -98,9 +105,14 @@ namespace Yt_Downloader
             Status = new_status;
             return this;
         }
-        public Video ChangeProgress(int new_progress)
+        public Video ChangeProgress(double new_progress)
         {
             Progress = new_progress;
+            return this;
+        }
+        public Video HasDownloadedFile(bool hasDownloaded)
+        {
+            HasDownloaded = hasDownloaded;
             return this;
         }
     }

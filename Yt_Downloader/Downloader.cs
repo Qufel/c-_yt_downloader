@@ -29,6 +29,7 @@ namespace Yt_Downloader
             var yt = new YoutubeClient();
             var streamMainfest = await yt.Videos.Streams.GetManifestAsync(videoToDownload.ID);
 
+            #region Stream Extraction
             //audio tracks itags: 249, 250, 251
             //whick give bitrate around: 50k, 70k, 160k
             var audioInfo = streamMainfest
@@ -75,6 +76,44 @@ namespace Yt_Downloader
 
             //final videoStream
             var video = videoInfo.Count() != 0 ? videoInfo.First() : null;
+            #endregion
+            //product: audio and video(null if audio_only) stream
+
+            //progress
+            if (isAudioOnly)
+            {
+                var filePath = $"{path}/{videoToDownload.Title}.{videoToDownload.Extension}";
+                var progress = new Progress<double>(p =>
+                {
+                    videoToDownload.ChangeProgress(p).ChangeStatus("Downloading...");
+                    if (p == 1)
+                    {
+                        videoToDownload.ChangeStatus("Finished");
+
+                        //Metadata assignment
+                        FFMpegArguments
+                            .FromFileInput(filePath)
+                            .OutputToFile(filePath, true, options => options
+                            .WithAudioBitrate(Convert.ToInt32(audio.Bitrate.KiloBitsPerSecond))
+                            );
+                    }
+                    Main.RefreshDownloadList();
+                });
+                try
+                {
+                    await yt.Videos.Streams.DownloadAsync(audio, filePath, progress);
+                }
+                catch
+                {
+                    videoToDownload.ChangeStatus("Already exists");
+                    Main.RefreshDownloadList();
+                }
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

@@ -34,11 +34,12 @@ namespace Yt_Downloader
                 if (ids.Contains(videos[i].ID))
                     to_download.Add(videos[i]);
             }
-            foreach (var item in to_download)
+            for (int i = 0; i < videos.Count; i++)
             {
-                bool isAudioOnly = audioFormats.Contains(item.Extension) ? true : false;
-                Downloader.Download(item, isAudioOnly);
+                bool isAudioOnly = audioFormats.Contains(videos[i].Extension) ? true : false;
+                Downloader.Download(videos[i], isAudioOnly);
             }
+            
         }
 
         //video and errors
@@ -79,7 +80,7 @@ namespace Yt_Downloader
         }
 
         //for code purposes
-        private static void RefreshDownloadList()
+        public static void RefreshDownloadList()
         {
             Form1.download_list.Items.Clear();
             for(int i = 0; i < videos.Count; i++)
@@ -87,7 +88,7 @@ namespace Yt_Downloader
                 var video = videos[i];
                 var time = SecondsToTime(video.Length);
 
-                string[] tmp = { video.ID, video.Title, video.Author, video.Extension, time, "0%", video.Status };
+                string[] tmp = { video.ID, video.Title, video.Author, video.Extension, time, $"{Math.Round(video.Progress * 100, 2)}%", video.Status };
                 var item = new ListViewItem(tmp);
                 Form1.download_list.Items.Add(item);
             }
